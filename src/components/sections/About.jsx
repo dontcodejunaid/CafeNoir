@@ -36,7 +36,7 @@ const About = () => {
   return (
     <section id="about" className="py-32 bg-bg-main relative overflow-hidden">
       {/* Background Decorative Blur */}
-      <div className="absolute top-1/4 -left-20 w-80 h-80 bg-primary/10 blur-[120px] rounded-full" />
+      <div className="absolute top-1/4 -left-20 w-80 h-80 rounded-full" style={{ background: 'rgba(200,153,126,0.08)', filter: 'blur(120px)' }} />
 
       <div className="container mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-20 items-center mb-24">
@@ -70,7 +70,7 @@ const About = () => {
               className="absolute -top-10 -right-10 w-40 h-40 bg-primary rounded-full flex flex-col items-center justify-center border-4 border-bg-main shadow-xl z-20"
             >
               <span className="text-white font-bold text-3xl">TOP 1</span>
-              <span className="text-white/80 text-[10px] uppercase tracking-tighter">Bistro in Noida</span>
+              <span className="text-white/80 text-[10px] uppercase tracking-tighter">Bistro in Ramanagara</span>
             </motion.div>
           </motion.div>
 
@@ -87,12 +87,12 @@ const About = () => {
 
             <motion.h2 variants={fadeIn("up", 0.2)} className="text-5xl md:text-6xl font-serif text-white mb-8 leading-[1.1]">
               Redefining the <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-indigo-300">Dining Protocol.</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-light">Dining Protocol.</span>
             </motion.h2>
 
-            <motion.div variants={fadeIn("up", 0.3)} className="space-y-6 text-slate-400 mb-12">
+            <motion.div variants={fadeIn("up", 0.3)} className="space-y-6 text-text-muted mb-12">
               <p className="text-lg">
-                Born in the heart of Noida's tech hub, CAFENOIR was built for the dreamers, the coders, and the creators. We realized that elite minds require elite fuel.
+                Located on Mysore Road near Ghousia College of Engineering in Ramanagara, CAFENOIR was built for the dreamers, travelers, and food lovers. We realized that elite minds require elite fuel.
               </p>
               <p>
                 Our kitchen functions like a high-performance engine. We analyze flavor profiles using molecular Gastronomy to ensure every bite triggers the perfect sensory response. We aren't just serving food; we are serving inspiration.
@@ -103,15 +103,15 @@ const About = () => {
             <div className="grid grid-cols-3 gap-6 border-y border-white/5 py-10 mb-12">
               <div>
                 <h4 className="text-white text-3xl font-serif mb-1"><StatCounter end={12} suffix="+" /></h4>
-                <p className="text-slate-500 text-[10px] uppercase tracking-widest font-bold">Years Exp</p>
+                <p className="text-text-muted/50 text-[10px] uppercase tracking-widest font-bold">Years Exp</p>
               </div>
               <div>
                 <h4 className="text-white text-3xl font-serif mb-1"><StatCounter end={85} suffix="+" /></h4>
-                <p className="text-slate-500 text-[10px] uppercase tracking-widest font-bold">Chef Artists</p>
+                <p className="text-text-muted/50 text-[10px] uppercase tracking-widest font-bold">Chef Artists</p>
               </div>
               <div>
                 <h4 className="text-white text-3xl font-serif mb-1"><StatCounter end={150} suffix="k" /></h4>
-                <p className="text-slate-500 text-[10px] uppercase tracking-widest font-bold">Guests</p>
+                <p className="text-text-muted/50 text-[10px] uppercase tracking-widest font-bold">Guests</p>
               </div>
             </div>
           </motion.div>
@@ -129,13 +129,13 @@ const About = () => {
             <motion.div 
               key={i}
               variants={fadeIn("up", 0.1 * i)}
-              className="p-8 rounded-3xl bg-slate-900/50 border border-white/5 hover:border-primary/40 transition-all group"
+              className="p-8 rounded-3xl bg-bg-soft/50 border border-border-subtle hover:border-primary/40 transition-all group"
             >
               <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
                 {value.icon}
               </div>
               <h5 className="text-white font-bold mb-3">{value.title}</h5>
-              <p className="text-slate-500 text-sm leading-relaxed">{value.desc}</p>
+              <p className="text-text-muted text-sm leading-relaxed">{value.desc}</p>
             </motion.div>
           ))}
         </motion.div>

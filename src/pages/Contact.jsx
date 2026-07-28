@@ -9,9 +9,9 @@ const Contact = () => {
   const [isSending, setIsSending] = useState(false);
 
   const contactInfo = [
-    { icon: <Phone size={20} />, title: "Call Us", detail: "+91 96209 96689", sub: "Mon-Fri, 9am-10pm" },
-    { icon: <Mail size={20} />, title: "Email Us", detail: "info@codeinnovativetechnologies.com", sub: "Response within 24hrs" },
-    { icon: <MapPin size={20} />, title: "Visit Us", detail: "Sector 62, Noida", sub: "Uttar Pradesh, India" },
+    { icon: <Phone size={20} />, title: "Call Us", detail: "+91 99455 05665", sub: "Mon-Fri, 9am-10pm" },
+    { icon: <Mail size={20} />, title: "Email Us", detail: "baigjunaid187@gmail.com", sub: "Response within 24hrs" },
+    { icon: <MapPin size={20} />, title: "Visit Us", detail: "Mysore Road, Ramanagara", sub: "Karnataka, India (Near Ghousia College)" },
     { icon: <Clock size={20} />, title: "Hours", detail: "10:00 AM - 11:00 PM", sub: "Open 7 Days a week" },
   ];
 

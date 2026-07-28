@@ -26,7 +26,7 @@ const ReservationForm = () => {
   const lottieData = bookingAnimation?.default || bookingAnimation;
 
   const onSubmit = (data) => {
-    const phoneNumber = "919620996689";
+    const phoneNumber = "919945505665";
 
     const message = `*New Table Reservation* 🍽️%0A%0A
 *Name:* ${data.name}%0A
@@ -41,9 +41,9 @@ const ReservationForm = () => {
 
     toast.success("Opening WhatsApp...", {
       style: {
-        background: "#020617",
-        color: "#6366f1",
-        border: "1px solid rgba(99,102,241,0.3)",
+        background: "#343629",
+        color: "#C8997E",
+        border: "1px solid rgba(200,153,126,0.3)",
         borderRadius: "12px",
       },
     });
@@ -55,11 +55,12 @@ const ReservationForm = () => {
   };
 
   return (
-    <section className="py-28 bg-[#020617] relative overflow-hidden">
+    <section className="py-28 bg-bg-main relative overflow-hidden">
       <motion.div
         animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2] }}
         transition={{ duration: 8, repeat: Infinity }}
-        className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-indigo-500/20 blur-[120px] rounded-full"
+        className="absolute top-0 left-1/4 w-[500px] h-[500px] rounded-full"
+        style={{ background: 'rgba(200,153,126,0.12)' }}
       />
 
       <div className="container mx-auto px-6 max-w-6xl relative z-10">
@@ -70,15 +71,15 @@ const ReservationForm = () => {
             whileInView={{ opacity: 1, x: 0 }}
             className="lg:w-2/5 space-y-6"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 text-indigo-400 text-xs font-bold uppercase">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase">
               <Sparkles size={14} /> Instant Booking
             </div>
 
             <h2 className="text-5xl md:text-6xl text-white font-bold leading-tight">
-              Book Your <span className="text-indigo-400">Table</span>
+              Book Your <span className="text-primary">Table</span>
             </h2>
 
-            <p className="text-slate-400">
+            <p className="text-text-muted">
               Reserve your table easily and enjoy a premium dining experience.
             </p>
 
@@ -99,7 +100,7 @@ const ReservationForm = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             className="lg:w-3/5 w-full"
           >
-            <div className="bg-white/5 backdrop-blur-xl border border-white/10 p-8 rounded-3xl shadow-xl">
+            <div className="bg-bg-soft/60 backdrop-blur-xl border border-border-subtle p-8 rounded-3xl shadow-xl">
               
               <form
                 onSubmit={handleSubmit(onSubmit)}
@@ -127,7 +128,7 @@ const ReservationForm = () => {
                         {...register(field.id, {
                           required: `${field.label} is required`,
                         })}
-                        className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/10 text-white outline-none border border-white/10 focus:border-indigo-400"
+                        className="w-full pl-10 pr-4 py-3 rounded-xl bg-bg-main text-text-base outline-none border border-border-subtle focus:border-primary"
                       />
                     </div>
 
@@ -145,7 +146,7 @@ const ReservationForm = () => {
                     <Clock className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
                     <select
                       {...register("time")}
-                      className="w-full pl-10 py-3 rounded-xl bg-white/10 text-white border border-white/10 [color-scheme:dark]"
+                      className="w-full pl-10 py-3 rounded-xl bg-bg-main text-text-base border border-border-subtle [color-scheme:dark]"
                     >
                       <option className="bg-bg-main text-white">07:00 PM</option>
                       <option className="bg-bg-main text-white">08:00 PM</option>
@@ -160,7 +161,7 @@ const ReservationForm = () => {
                     <Users className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
                     <select
                       {...register("guests")}
-                      className="w-full pl-10 py-3 rounded-xl bg-white/10 text-white border border-white/10 [color-scheme:dark]"
+                      className="w-full pl-10 py-3 rounded-xl bg-bg-main text-text-base border border-border-subtle [color-scheme:dark]"
                     >
                       <option className="bg-bg-main text-white">2</option>
                       <option className="bg-bg-main text-white">4</option>
@@ -175,7 +176,7 @@ const ReservationForm = () => {
                   <label className="text-xs text-gray-400">Message</label>
                   <textarea
                     {...register("message")}
-                    className="w-full mt-1 p-4 rounded-xl bg-white/10 text-white border border-white/10"
+                    className="w-full mt-1 p-4 rounded-xl bg-bg-main text-text-base border border-border-subtle"
                     placeholder="Special request..."
                   />
                 </div>
@@ -184,7 +185,7 @@ const ReservationForm = () => {
                 <motion.button
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.97 }}
-                  className="md:col-span-2 bg-indigo-500 py-4 rounded-xl font-bold text-white flex justify-center items-center gap-2"
+                   className="md:col-span-2 bg-primary py-4 rounded-xl font-bold text-cream flex justify-center items-center gap-2 hover:bg-primary-dark transition-colors"
                 >
                   Confirm Booking <Send size={16} />
                 </motion.button>

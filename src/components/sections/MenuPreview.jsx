@@ -38,9 +38,9 @@ const MenuPreview = () => {
             <Sparkles className="text-primary" size={16} />
           </div>
           <h2 className="text-5xl md:text-6xl font-serif text-white mb-8">
-            The <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-primary to-indigo-300">Culinary</span> Gallery
+            The <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-light">Culinary</span> Gallery
           </h2>
-          <p className="text-slate-400 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-text-muted max-w-2xl mx-auto leading-relaxed">
             Every dish is a prototype of perfection. Explore our meticulously curated menu 
             designed for those who appreciate the finer details of gastronomy.
           </p>
@@ -55,7 +55,7 @@ const MenuPreview = () => {
               className="relative px-8 py-3 group overflow-hidden"
             >
               <span className={`relative z-10 text-sm font-bold tracking-widest uppercase transition-colors duration-300 ${
-                activeTab === cat ? "text-white" : "text-slate-500 group-hover:text-white"
+                activeTab === cat ? "text-cream" : "text-text-muted group-hover:text-text-base"
               }`}>
                 {cat}
               </span>
@@ -135,7 +135,7 @@ const MenuPreview = () => {
 
                     <div className="w-12 h-[1px] bg-primary/40 group-hover:w-full transition-all duration-700" />
 
-                    <p className="text-slate-400 text-sm leading-relaxed line-clamp-3 group-hover:text-slate-200 transition-colors">
+                    <p className="text-text-muted text-sm leading-relaxed line-clamp-3 group-hover:text-text-base transition-colors">
                       {item.description}
                     </p>
 

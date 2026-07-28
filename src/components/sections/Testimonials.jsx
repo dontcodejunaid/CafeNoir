@@ -12,11 +12,11 @@ import "swiper/css/effect-coverflow";
 
 const Testimonials = () => {
   return (
-    <section className="py-32 bg-[#020617] relative overflow-hidden">
+    <section className="py-32 bg-bg-main relative overflow-hidden">
       {/* Decorative Background Elements */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none">
-        <div className="absolute top-1/4 left-10 w-72 h-72 bg-primary/10 blur-[120px] rounded-full" />
-        <div className="absolute bottom-1/4 right-10 w-96 h-96 bg-indigo-500/10 blur-[150px] rounded-full" />
+        <div className="absolute top-1/4 left-10 w-72 h-72 rounded-full" style={{background:'rgba(200,153,126,0.08)',filter:'blur(120px)'}} />
+        <div className="absolute bottom-1/4 right-10 w-96 h-96 rounded-full" style={{background:'rgba(107,112,92,0.07)',filter:'blur(150px)'}} />
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
@@ -35,16 +35,16 @@ const Testimonials = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-5xl md:text-7xl font-serif text-white mb-6"
+            className="text-5xl md:text-7xl font-serif text-text-base mb-6"
           >
-            Voices of <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-primary to-indigo-300">CAFENOIR</span>
+            Voices of <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-light">CAFENOIR</span>
           </motion.h2 >
           <motion.p 
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-slate-400 max-w-2xl mx-auto text-lg"
+            className="text-text-muted max-w-2xl mx-auto text-lg"
           >
             Don't just take our word for it. Hear from our community of food enthusiasts and lifestyle connoisseurs.
           </motion.p>
@@ -81,7 +81,7 @@ const Testimonials = () => {
                 {/* Card Glow Effect */}
                 <div className="absolute -inset-0.5 bg-gradient-to-b from-primary/20 to-transparent rounded-[2.5rem] blur opacity-0 group-hover:opacity-100 transition duration-500" />
                 
-                <div className="relative bg-[#050b1a]/80 backdrop-blur-xl border border-white/5 p-8 md:p-10 rounded-[2.5rem] h-full flex flex-col justify-between overflow-hidden shadow-2xl">
+                <div className="relative bg-bg-soft/80 backdrop-blur-xl border border-border-subtle p-8 md:p-10 rounded-[2.5rem] h-full flex flex-col justify-between overflow-hidden shadow-2xl">
                   
                   {/* Decorative Quote Icon */}
                   <Quote className="absolute top-6 right-8 text-primary/10 group-hover:text-primary/20 transition-colors" size={80} />
@@ -98,7 +98,7 @@ const Testimonials = () => {
                       </span>
                     </div>
 
-                    <p className="text-slate-300 text-lg md:text-xl leading-relaxed mb-10 font-light italic">
+                    <p className="text-text-muted text-lg md:text-xl leading-relaxed mb-10 font-light italic">
                       "{review.comment}"
                     </p>
                   </div>
@@ -111,7 +111,7 @@ const Testimonials = () => {
                         className="w-14 h-14 rounded-2xl object-cover border-2 border-primary/20 group-hover:border-primary transition-colors duration-500" 
                       />
                       {review.verified && (
-                        <div className="absolute -bottom-1 -right-1 bg-primary text-white rounded-full p-0.5 border-2 border-[#020617]">
+                        <div className="absolute -bottom-1 -right-1 bg-primary text-cream rounded-full p-0.5 border-2 border-bg-main">
                           <CheckCircle2 size={12} />
                         </div>
                       )}
@@ -119,7 +119,7 @@ const Testimonials = () => {
                     <div>
                       <h4 className="text-white font-serif text-lg group-hover:text-primary transition-colors">{review.name}</h4>
                       <div className="flex flex-col">
-                        <span className="text-white/40 text-[10px] uppercase tracking-[0.2em]">{review.role}</span>
+                        <span className="text-text-muted/40 text-[10px] uppercase tracking-[0.2em]">{review.role}</span>
                         {review.social && (
                           <span className="text-primary/60 text-[10px] font-medium mt-0.5">{review.social}</span>
                         )}
@@ -136,8 +136,8 @@ const Testimonials = () => {
       {/* Custom Styles for Swiper Bullets */}
       <style jsx global>{`
         .testimonial-swiper .swiper-pagination-bullet {
-          background: #4f46e5 !important;
-          opacity: 0.3;
+          background: #6B705C !important;
+          opacity: 0.4;
           width: 8px;
           height: 8px;
           transition: all 0.3s ease;
@@ -146,7 +146,7 @@ const Testimonials = () => {
           opacity: 1;
           width: 24px;
           border-radius: 4px;
-          background: #6366f1 !important;
+          background: #C8997E !important;
         }
       `}</style>
     </section>

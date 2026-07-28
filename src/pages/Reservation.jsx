@@ -8,9 +8,9 @@ const Reservation = () => {
   const y2 = useTransform(scrollY, [0, 500], [0, -150]);
 
   const contactInfo = [
-    { icon: <MapPin size={24} />, title: "Visit Us", detail: "Sector 62, Noida", sub: "Gautam Buddha Nagar, UP" },
-    { icon: <Phone size={24} />, title: "Call Us", detail: "+91 96209 96689", sub: "Mon - Sun, 10am - 11pm" },
-    { icon: <Mail size={24} />, title: "Email Us", detail: "info@codeinnovativetechnologies.com", sub: "Response within 24hrs" }
+    { icon: <MapPin size={24} />, title: "Visit Us", detail: "Mysore Road, Ramanagara", sub: "Karnataka, India 562159" },
+    { icon: <Phone size={24} />, title: "Call Us", detail: "+91 99455 05665", sub: "Mon - Sun, 10am - 11pm" },
+    { icon: <Mail size={24} />, title: "Email Us", detail: "baigjunaid187@gmail.com", sub: "Response within 24hrs" }
   ];
 
   const policies = [

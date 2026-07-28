@@ -35,7 +35,7 @@ const Hero = () => {
             transition={{ duration: 2, ease: "easeOut" }}
             className="absolute inset-0 w-full h-full"
           >
-            <div className="absolute inset-0 bg-gradient-to-b from-bg-main/80 via-bg-main/40 to-bg-main z-10" />
+            <div className="absolute inset-0 bg-gradient-to-b from-bg-main/85 via-bg-main/50 to-bg-main z-10" />
             <img 
               src={HERO_IMAGES[currentImg]} 
               className="w-full h-full object-cover"
@@ -55,26 +55,26 @@ const Hero = () => {
         >
           <motion.div 
             variants={fadeIn("down", 0.2)}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold tracking-widest mb-8 mx-auto lg:mx-0"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/25 text-primary text-xs font-bold tracking-widest mb-8 mx-auto lg:mx-0"
           >
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
             </span>
-            NOW OPEN IN SECTOR 62, NOIDA
+            NOW OPEN ON MYSORE ROAD, RAMANAGARA
           </motion.div>
 
           <motion.h1 
             variants={fadeIn("up", 0.4)}
-            className="text-6xl md:text-8xl font-serif text-white mb-6 leading-[1.05]"
+            className="text-6xl md:text-8xl font-serif text-text-base mb-6 leading-[1.05]"
           >
-            Taste the <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-indigo-300 italic">Future</span> <br /> 
+            Taste the <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-light italic">Future</span> <br /> 
             of Fine Dining.
           </motion.h1>
 
           <motion.p 
             variants={fadeIn("up", 0.6)}
-            className="text-lg text-slate-400 max-w-xl mb-12 mx-auto lg:mx-0 leading-relaxed"
+            className="text-lg text-text-muted max-w-xl mb-12 mx-auto lg:mx-0 leading-relaxed"
           >
             Experience a symphony of molecular gastronomy and traditional flavors. 
             Designed for the modern palate, crafted for the soul.
@@ -86,14 +86,14 @@ const Hero = () => {
             className="flex flex-wrap gap-4 justify-center lg:justify-start"
           >
             {/* CTA 1: Must Try */}
-            <Link to="/menu" className="group relative px-8 py-4 bg-primary rounded-2xl font-bold text-white overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(99,102,241,0.4)]">
+            <Link to="/menu" className="group relative px-8 py-4 bg-primary rounded-2xl font-bold text-cream overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(200,153,126,0.4)]">
               <span className="relative z-10 flex items-center gap-2">
                 <UtensilsCrossed size={18} /> Must Try <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </span>
             </Link>
 
             {/* CTA 2: Contact */}
-            <Link to="/contact" className="group px-8 py-4 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl font-bold text-white transition-all hover:bg-white/10 hover:border-primary/50 flex items-center gap-2">
+            <Link to="/contact" className="group px-8 py-4 bg-white/5 backdrop-blur-xl border border-sand/20 rounded-2xl font-bold text-text-base transition-all hover:bg-white/10 hover:border-primary/50 flex items-center gap-2">
               <MessageSquare size={18} /> Contact Us
             </Link>
 
@@ -101,12 +101,12 @@ const Hero = () => {
             <div className="w-full flex gap-6 justify-center lg:justify-start mt-4 pt-6 border-t border-white/5">
               <div className="flex flex-col items-center lg:items-start">
                 <span className="text-white font-serif text-xl font-bold italic">4.9/5</span>
-                <span className="text-[10px] text-slate-500 uppercase tracking-widest">Google Rating</span>
+                <span className="text-[10px] text-text-muted/60 uppercase tracking-widest">Google Rating</span>
               </div>
               <div className="w-[1px] h-10 bg-white/10" />
               <div className="flex flex-col items-center lg:items-start">
                 <span className="text-white font-serif text-xl font-bold italic">Michelin</span>
-                <span className="text-[10px] text-slate-500 uppercase tracking-widest">Inspired Menu</span>
+                <span className="text-[10px] text-text-muted/60 uppercase tracking-widest">Michelin</span>
               </div>
             </div>
           </motion.div>

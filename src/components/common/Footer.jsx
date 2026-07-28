@@ -26,18 +26,17 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { Icon: FaInstagram, href: "https://www.instagram.com/code_innovativetechnologies", color: "hover:text-pink-500", label: "Instagram" },
-    { Icon: FaFacebook, href: "https://www.facebook.com/cafenova", color: "hover:text-blue-600", label: "Facebook" },
-    { Icon: FaTwitter, href: "https://x.com/cafenova", color: "hover:text-sky-400", label: "X / Twitter" },
-    { Icon: FaLinkedin, href: "https://www.linkedin.com/company/code-innovative-technologies/", color: "hover:text-blue-700", label: "LinkedIn" },
+    { Icon: FaInstagram, href: "https://www.instagram.com/dontfollowjunaid?igsh=MTZtczByOWxsMDJlcw==", color: "hover:text-pink-500", label: "Instagram" },
+    { Icon: FaTwitter, href: "https://x.com/baigjunaid44", color: "hover:text-sky-400", label: "X / Twitter" },
+    { Icon: FaLinkedin, href: "https://www.linkedin.com/in/mohammedjunaidbaig187/", color: "hover:text-blue-700", label: "LinkedIn" },
   ];
 
   return (
-    <footer className="relative bg-[#020617] pt-32 pb-8 overflow-hidden border-t border-white/5">
+    <footer className="relative bg-bg-main pt-32 pb-8 overflow-hidden border-t border-border-subtle">
       {/* --- Advanced Background FX --- */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-24 -right-24 w-96 h-96 bg-primary/10 blur-[120px] rounded-full animate-pulse" />
-        <div className="absolute top-1/2 left-0 w-64 h-64 bg-indigo-500/5 blur-[100px] rounded-full" />
+        <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full animate-pulse" style={{background:'rgba(200,153,126,0.08)',filter:'blur(120px)'}} />
+        <div className="absolute top-1/2 left-0 w-64 h-64 rounded-full" style={{background:'rgba(107,112,92,0.06)',filter:'blur(100px)'}} />
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
@@ -49,8 +48,8 @@ const Footer = () => {
           viewport={{ once: true }}
           className="relative mb-24 group"
         >
-          <div className="absolute -inset-1 bg-gradient-to-r from-primary/30 to-indigo-500/30 rounded-[3rem] blur-xl opacity-50 group-hover:opacity-100 transition duration-1000" />
-          <div className="relative bg-slate-950/80 backdrop-blur-3xl rounded-[2.8rem] border border-white/10 p-8 md:p-16 overflow-hidden">
+          <div className="absolute -inset-1 rounded-[3rem] blur-xl opacity-50 group-hover:opacity-100 transition duration-1000" style={{background:'linear-gradient(to right, rgba(200,153,126,0.25), rgba(107,112,92,0.25))'}} />
+          <div className="relative bg-bg-soft/80 backdrop-blur-3xl rounded-[2.8rem] border border-border-subtle p-8 md:p-16 overflow-hidden">
             <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
               <div className="max-w-xl text-center lg:text-left space-y-4">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold uppercase tracking-widest">
@@ -59,7 +58,7 @@ const Footer = () => {
                 <h3 className="text-4xl md:text-6xl font-serif text-white">
                   Experience the <span className="italic text-primary-light">Extraordinary</span>
                 </h3>
-                <p className="text-slate-400 text-lg">
+                <p className="text-text-muted text-lg">
                   Subscribe to receive secret tasting menus and private gallery invites.
                 </p>
               </div>
@@ -70,7 +69,7 @@ const Footer = () => {
                   placeholder="Enter your email" 
                   className="w-full bg-white/[0.03] border border-white/10 rounded-2xl px-8 py-6 text-white outline-none focus:ring-2 ring-primary/20 focus:border-primary/50 transition-all text-lg"
                 />
-                <button className="mt-4 md:mt-0 md:absolute md:right-2 md:top-2 md:bottom-2 bg-primary hover:bg-primary-dark text-white px-10 rounded-xl transition-all flex items-center justify-center gap-2 font-black uppercase text-xs tracking-widest shadow-2xl shadow-primary/40">
+                <button className="mt-4 md:mt-0 md:absolute md:right-2 md:top-2 md:bottom-2 bg-primary hover:bg-primary-dark text-cream px-10 rounded-xl transition-all flex items-center justify-center gap-2 font-black uppercase text-xs tracking-widest shadow-2xl" style={{boxShadow:'0 25px 50px rgba(200,153,126,0.3)'}}>
                   Join <Send size={16} />
                 </button>
               </form>
@@ -83,11 +82,19 @@ const Footer = () => {
           
           {/* Brand & Socials */}
           <div className="space-y-10">
-            <div className="space-y-6">
-              <h2 className="text-4xl font-black tracking-tighter text-white">
-                CAFE<span className="text-primary italic">NOIR</span>
-              </h2>
-              <p className="text-slate-400 leading-relaxed text-base">
+            <div className="space-y-4">
+              <div className="flex items-center gap-4">
+                <img
+                  src="/cafenoir-logo.png"
+                  alt="CafeNoir"
+                  className="w-14 h-14 rounded-full object-cover border border-primary/30"
+                  style={{ filter: 'drop-shadow(0 0 10px rgba(200,153,126,0.35))' }}
+                />
+                <h2 className="text-4xl font-black tracking-tighter text-text-base">
+                  CAFE<span className="text-primary italic">NOIR</span>
+                </h2>
+              </div>
+              <p className="text-text-muted leading-relaxed text-base">
                 Synthesizing avant-garde culinary techniques with digital sophistication. A sanctuary for the modern connoisseur.
               </p>
             </div>
@@ -149,14 +156,14 @@ const Footer = () => {
                 <MapPin size={20} className="text-primary" /> The Venue
               </h4>
               <div className="text-xs font-mono text-primary/60 bg-primary/5 px-4 py-2 rounded-lg border border-primary/10">
-                Lat: 28.6273° N | Long: 77.3725° E
+                Lat: 12.7214° N | Long: 77.2809° E
               </div>
             </div>
 
             <div className="relative h-64 w-full rounded-[2.5rem] overflow-hidden group shadow-inner">
                <div className="absolute inset-0 bg-primary/20 mix-blend-color pointer-events-none z-10 opacity-40 group-hover:opacity-0 transition-opacity duration-700" />
                <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14008.11482718888!2d77.3703!3d28.6273!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjjCsDM3JzM4LjMiTiA3N8KwMjInMTMuMSJF!5e0!3m2!1sen!2sin!4v1634567890123!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15569.756209590823!2d77.2709!3d12.7214!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bfa376cf9adab95%3A0xb3514757c3d183d2!2sGhousia%20College%20of%20Engineering!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
                 className="w-full h-full grayscale hover:grayscale-0 contrast-125 transition-all duration-1000 scale-105 group-hover:scale-100"
                 loading="lazy"
               />
@@ -172,7 +179,7 @@ const Footer = () => {
           
           {/* Live Status Engine */}
           <div className="flex flex-wrap items-center justify-center gap-6">
-            <div className="flex items-center gap-4 bg-slate-900/50 backdrop-blur-md px-6 py-3 rounded-2xl border border-white/5 shadow-xl">
+            <div className="flex items-center gap-4 bg-bg-soft/50 backdrop-blur-md px-6 py-3 rounded-2xl border border-border-subtle shadow-xl">
               <div className="relative flex h-3 w-3">
                 <span className="animate-ping absolute h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                 <span className="relative rounded-full h-3 w-3 bg-emerald-500"></span>
@@ -180,7 +187,7 @@ const Footer = () => {
               <div className="flex flex-col">
                 <span className="text-[10px] uppercase font-black tracking-[0.2em] text-white">Live Service</span>
                 <span className="text-[9px] text-slate-500 font-mono italic">
-                  Kitchen Active • Serving Sector 62, Noida
+                  Kitchen Active • Serving Mysore Road, Ramanagara
                 </span>
               </div>
             </div>
@@ -213,10 +220,10 @@ const Footer = () => {
 
         {/* Final Encrypted Brand Mark */}
         <div className="mt-16 text-center border-t border-white/[0.02] pt-8">
-           <div className="flex items-center justify-center gap-3 text-slate-700">
+           <div className="flex items-center justify-center gap-3 text-text-muted/30">
               <ShieldCheck size={14} className="opacity-20" />
               <p className="text-[9px] uppercase font-black tracking-[0.5em] opacity-30">
-                Secured Digital Environment <span className="text-primary mx-2">•</span> Design by Satyam
+                Secured Digital Environment <span className="text-primary mx-2">•</span> Design by Junaid
               </p>
            </div>
         </div>

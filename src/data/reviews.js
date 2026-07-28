@@ -17,8 +17,8 @@ export const reviews = [
     role: "Lifestyle Blogger",
     rating: 5,
     verified: true,
-    social: "@noida_vlogger",
-    comment: "The best aesthetic spot in Noida! The lighting, the music, and the molten lava cake are to die for. Perfect for my Instagram feed! ✨",
+    social: "@mysore_road_vlogger",
+    comment: "The best aesthetic spot in Ramanagara! The lighting, the music, and the molten lava cake are to die for. Perfect for my Instagram feed! ✨",
     avatar: "https://i.pravatar.cc/150?u=priya",
     category: "Aesthetics",
     date: "1 week ago"

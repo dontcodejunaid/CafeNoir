@@ -1,35 +1,46 @@
 @import "tailwindcss";
 
 @theme {
-  /* --- 🎨 THE PRESTIGE COLOR SYSTEM --- */
+  /* --- 🌿 EARTHY PALETTE SYSTEM --- */
   
-  /* Brand Constants */
-  --color-primary: #6366f1;
-  --color-primary-light: #a5b4fc;
-  --color-primary-dark: #4338ca;
-  --color-gold: #fbbf24;
+  /* 🎨 Core Brand Palette */
+  --color-cream:       #FFE8D6;   /* Light Cream   */
+  --color-earth:       #A8A68D;   /* Earth Brown   */
+  --color-cocoa:       #C8997E;   /* Cocoa (Primary Accent) */
+  --color-sand:        #B7B7A4;   /* Sand          */
+  --color-leaf:        #6B705C;   /* Leaf Green    */
 
-  /* 🌑 NIGHT MODE VARIABLES (Default) */
-  --color-bg-main: #020617;
-  --color-bg-soft: #0f172a;
-  --color-surface: rgba(255, 255, 255, 0.03);
-  --color-border-subtle: rgba(255, 255, 255, 0.08);
-  --color-text-base: #f8fafc;
-  --color-text-muted: #94a3b8;
+  /* 🌑 DARK (DEFAULT) THEME */
+  --color-primary:       #C8997E;   /* Cocoa — main CTA & accent */
+  --color-primary-light: #dbb49e;   /* Lighter cocoa for gradients */
+  --color-primary-dark:  #a87a5e;   /* Deeper cocoa for hover */
+  --color-gold:          #C8997E;   /* Reuse cocoa as "gold" accent */
 
-  /* ☀️ DAY MODE VARIABLES */
-  --light-bg-main: #f8fafc;
-  --light-bg-soft: #ffffff;
-  --light-surface: rgba(0, 0, 0, 0.02);
-  --light-border-subtle: rgba(0, 0, 0, 0.06);
-  --light-text-base: #0f172a;
-  --light-text-muted: #475569;
+  --color-bg-main:        #2c2e25;  /* Very dark olive-forest */
+  --color-bg-soft:        #343629;  /* Slightly lighter for cards */
+  --color-surface:        rgba(107, 112, 92, 0.10);  /* Leaf-green tinted glass */
+  --color-border-subtle:  rgba(183, 183, 164, 0.12); /* Sand-tinted border */
+  --color-text-base:      #FFE8D6;  /* Light Cream */
+  --color-text-muted:     #B7B7A4;  /* Sand */
+
+  /* ☀️ DAY THEME — rich espresso terracotta */
+  --light-bg-main:        #3D2318;  /* Deep espresso brown */
+  --light-bg-soft:        #4E2E1E;  /* Rich dark sienna for cards */
+  --light-surface:        rgba(200, 153, 126, 0.10);
+  --light-border-subtle:  rgba(200, 153, 126, 0.20);
+  --light-text-base:      #FFE8D6;  /* Cream — high contrast on dark brown */
+  --light-text-muted:     #C8997E;  /* Warm cocoa for secondary text */
+
+  /* Day-mode primary — brighter cocoa to pop on espresso BG */
+  --light-primary:        #D4A882;  /* Warm cocoa, slightly lighter */
+  --light-primary-light:  #E8C4A0;  /* Light cocoa for gradients */
+  --light-primary-dark:   #B8845E;  /* Deeper cocoa for hover */
 
   /* Typography */
   --font-serif: "Playfair Display", serif;
   --font-sans: "Plus Jakarta Sans", sans-serif;
 
-  /* 🌀 Custom Spring Physics (Fixed for Tailwind v4) */
+  /* 🌀 Custom Spring Physics */
   --ease-spring: cubic-bezier(0.68, -0.6, 0.32, 1.6);
 }
 
@@ -40,54 +51,75 @@
 
   body {
     @apply bg-bg-main text-text-base font-sans antialiased transition-colors duration-700 ease-in-out;
-    background-image: radial-gradient(circle at 50% -20%, rgba(99, 102, 241, 0.15), transparent 80%);
+    background-image:
+      radial-gradient(circle at 15% 50%, rgba(107, 112, 92, 0.18), transparent 60%),
+      radial-gradient(circle at 85% 10%, rgba(200, 153, 126, 0.12), transparent 50%);
     min-height: 100vh;
   }
 
-  /* --- THEME TOGGLE LOGIC --- */
-  .light {
+  /* The .light class is on <html>; body inherits bg via CSS vars */
+  html.light {
     color-scheme: light;
-    --color-bg-main: var(--light-bg-main);
-    --color-bg-soft: var(--light-bg-soft);
-    --color-surface: var(--light-surface);
+    --color-bg-main:       var(--light-bg-main);
+    --color-bg-soft:       var(--light-bg-soft);
+    --color-surface:       var(--light-surface);
     --color-border-subtle: var(--light-border-subtle);
-    --color-text-base: var(--light-text-base);
-    --color-text-muted: var(--light-text-muted);
+    --color-text-base:     var(--light-text-base);
+    --color-text-muted:    var(--light-text-muted);
+    /* Swap primary to deeper cocoa for day-mode legibility */
+    --color-primary:       var(--light-primary);
+    --color-primary-light: var(--light-primary-light);
+    --color-primary-dark:  var(--light-primary-dark);
   }
 
-  .light body {
-    background-image: radial-gradient(circle at 50% -20%, rgba(99, 102, 241, 0.05), transparent 80%);
+  html.light body {
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(200, 120, 80, 0.22), transparent 55%),
+      radial-gradient(circle at 80% 70%, rgba(80, 40, 20, 0.35), transparent 55%);
   }
 
   /* Smooth custom scrollbar */
-  ::-webkit-scrollbar {
-    width: 6px;
-  }
-  ::-webkit-scrollbar-track {
-    @apply bg-bg-main;
-  }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { @apply bg-bg-main; }
   ::-webkit-scrollbar-thumb {
-    @apply bg-primary/40 rounded-full hover:bg-primary;
+    background: #6B705C;
+    border-radius: 9999px;
   }
+  ::-webkit-scrollbar-thumb:hover { background: #C8997E; }
 }
 
 @layer components {
-  /* 💎 Glassmorphic Card */
+  /* 💎 Glassmorphic Card — earthy tint */
   .glass-card {
     @apply relative overflow-hidden backdrop-blur-2xl bg-surface border border-border-subtle
            rounded-[2rem] transition-all duration-500 ease-out;
   }
 
   .glass-card:hover {
-    @apply border-primary/30 -translate-y-2 shadow-[0_20px_50px_rgba(0,0,0,0.2)];
+    border-color: rgba(200, 153, 126, 0.35);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(44, 46, 37, 0.25);
   }
 
-  /* 🔥 Luxury Interaction Button */
+  html.light .glass-card {
+    box-shadow: 0 4px 24px rgba(107, 112, 92, 0.08);
+  }
+
+  html.light .glass-card:hover {
+    box-shadow: 0 16px 40px rgba(107, 112, 92, 0.18);
+  }
+
+  /* 🔥 Luxury CTA Button */
   .btn-luxury {
     @apply relative px-10 py-4 rounded-full font-bold uppercase tracking-[0.2em] text-[10px]
-           bg-primary text-white overflow-hidden transition-all duration-500
-           hover:shadow-[0_0_30px_rgba(99,102,241,0.5)] hover:scale-105 active:scale-95;
+           bg-primary text-cream overflow-hidden transition-all duration-500
+           hover:scale-105 active:scale-95;
+    box-shadow: 0 0 0 transparent;
     transition-timing-function: var(--ease-spring);
+  }
+
+  .btn-luxury:hover {
+    box-shadow: 0 0 30px rgba(200, 153, 126, 0.45);
   }
 
   .btn-luxury::after {
@@ -96,33 +128,51 @@
            transition-all duration-1000 skew-x-[-25deg];
   }
 
-  .btn-luxury:hover::after {
-    @apply left-[100%];
-  }
+  .btn-luxury:hover::after { @apply left-[100%]; }
 
-  /* ✨ Aurora Background Glow */
+  /* ✨ Aurora Glow — earthy warm */
   .aurora {
-    @apply absolute blur-[120px] rounded-full pointer-events-none opacity-40 mix-blend-screen;
-    background: linear-gradient(45deg, var(--color-primary), #818cf8);
+    @apply absolute blur-[120px] rounded-full pointer-events-none opacity-35;
+    background: linear-gradient(45deg, #C8997E, #A8A68D);
+    mix-blend-mode: soft-light;
   }
 
   /* 🧊 Premium Gradient Text */
   .text-luxury {
-    @apply bg-clip-text text-transparent bg-gradient-to-br from-text-base via-primary-light to-primary;
+    background: linear-gradient(135deg, #FFE8D6, #C8997E, #A8A68D);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     display: inline-block;
   }
 
+  html.light .text-luxury {
+    background: linear-gradient(135deg, #FFE8D6, #D4A882, #E8C4A0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Glass Indigo → earthy glass (auto-adapts to theme) */
+  .glass-indigo {
+    background: rgba(52, 54, 41, 0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  html.light .glass-indigo {
+    background: rgba(61, 35, 24, 0.80);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(200, 153, 126, 0.25);
+  }
+
   /* 🕒 Theme-Sensitive Icons */
-  .theme-icon {
-    transition: transform 600ms var(--ease-spring);
-  }
-  
-  .light .theme-icon {
-    @apply rotate-[360deg];
-  }
+  .theme-icon { transition: transform 600ms var(--ease-spring); }
+  html.light .theme-icon { @apply rotate-[360deg]; }
 }
 
-/* 🌌 Mesh Background Layer */
+/* 🌿 Earthy Mesh Background */
 .bg-mesh {
   position: relative;
   overflow: hidden;
@@ -132,8 +182,8 @@
   content: "";
   position: absolute;
   inset: 0;
-  background-image: 
-    radial-gradient(at 20% 20%, rgba(99, 102, 241, 0.1), transparent 50%),
-    radial-gradient(at 80% 80%, rgba(79, 70, 229, 0.08), transparent 50%);
+  background-image:
+    radial-gradient(at 20% 20%, rgba(107, 112, 92, 0.12), transparent 50%),
+    radial-gradient(at 80% 80%, rgba(200, 153, 126, 0.08), transparent 50%);
   pointer-events: none;
-}
+}

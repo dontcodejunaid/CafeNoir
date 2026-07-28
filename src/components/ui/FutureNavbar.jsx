@@ -39,11 +39,11 @@ const Frame = ({
 /** 🎨 BUTTON VARIANTS & COLORS **/
 const COLORS = {
   default: {
-    stroke1: "#fbbf24", // Gold for CafeNova
-    fill1: "rgba(251, 191, 36, 0.22)",
-    stroke2: "#fbbf24",
-    fill2: "rgba(251, 191, 36, 0.1)",
-    text: "#ffffff",
+    stroke1: "#C8997E", // Cocoa for CafeNova
+    fill1: "rgba(200, 153, 126, 0.22)",
+    stroke2: "#A8A68D", // Earth Brown
+    fill2: "rgba(168, 166, 141, 0.10)",
+    text: "#FFE8D6",   // Light Cream text
   }
 };
 

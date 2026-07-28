@@ -218,14 +218,13 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Final Encrypted Brand Mark */}
-        <div className="mt-16 text-center border-t border-white/[0.02] pt-8">
-           <div className="flex items-center justify-center gap-3 text-text-muted/30">
-              <ShieldCheck size={14} className="opacity-20" />
-              <p className="text-[9px] uppercase font-black tracking-[0.5em] opacity-30">
-                Secured Digital Environment <span className="text-primary mx-2">•</span> Design by Junaid
-              </p>
-           </div>
+        {/* Final Copyright & Brand Mark */}
+        <div className="mt-16 border-t border-white/[0.04] pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-text-muted/70 text-xs font-serif">
+          <p>© {new Date().getFullYear()} CAFENOIR Café & Bistro. All rights reserved.</p>
+          <div className="flex items-center gap-2.5 text-[10px] uppercase font-sans tracking-[0.25em] text-text-muted/50">
+             <ShieldCheck size={14} className="text-primary opacity-70" />
+             <span>Secured Digital Environment <span className="text-primary mx-1.5">•</span> Design by Junaid</span>
+          </div>
         </div>
       </div>
     </footer>

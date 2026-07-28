@@ -4,7 +4,7 @@ export const getRestaurantStatus = () => {
   const hour = now.getHours();
   const day = now.getDay(); // 0 = Sunday
 
-  // Assuming CafeNova is open 10:00 AM to 11:00 PM
+  // Assuming CAFENOIR is open 10:00 AM to 11:00 PM
   const isOpen = hour >= 10 && hour < 23;
   
   if (day === 1) return { status: "Closed", color: "text-red-500", message: "Closed for Maintenance (Monday)" };
@@ -13,7 +13,7 @@ export const getRestaurantStatus = () => {
     : { status: "Closed", color: "text-red-500", message: "Opens at 10:00 AM" };
 };
 
-// 2. Format Currency (INR for CafeNova)
+// 2. Format Currency (INR for CAFENOIR)
 export const formatPrice = (amount) => {
   return new Intl.NumberFormat('en-IN', {
     style: 'currency',

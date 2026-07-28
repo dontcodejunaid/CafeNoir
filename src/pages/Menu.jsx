@@ -162,33 +162,43 @@ const Menu = () => {
                         </div>
                       )}
 
-                      <div className="mt-6 flex items-center gap-3">
-                        <button
-                          type="button"
-                          onClick={() => updateQuantity(item.id, getItemQuantity(item.id) - 1)}
-                          className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition-colors hover:border-primary/30 hover:bg-white/10"
-                          aria-label={`Decrease quantity of ${item.name}`}
-                        >
-                          -
-                        </button>
+                      {getItemQuantity(item.id) > 0 ? (
+                        <div className="mt-6 flex items-center gap-3">
+                          <button
+                            type="button"
+                            onClick={() => updateQuantity(item.id, getItemQuantity(item.id) - 1)}
+                            className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition-colors hover:border-primary/30 hover:bg-white/10"
+                            aria-label={`Decrease quantity of ${item.name}`}
+                          >
+                            -
+                          </button>
 
+                          <button
+                            type="button"
+                            onClick={() => addToCart(item)}
+                            className="flex-1 flex items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 text-xs font-bold uppercase tracking-widest text-white transition-colors hover:bg-primary-dark"
+                          >
+                            <Plus size={14} /> Add More
+                          </button>
+
+                          <button
+                            type="button"
+                            onClick={() => updateQuantity(item.id, getItemQuantity(item.id) + 1)}
+                            className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition-colors hover:border-primary/30 hover:bg-white/10"
+                            aria-label={`Increase quantity of ${item.name}`}
+                          >
+                            +
+                          </button>
+                        </div>
+                      ) : (
                         <button
                           type="button"
                           onClick={() => addToCart(item)}
-                          className="flex-1 flex items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 text-xs font-bold uppercase tracking-widest text-white transition-colors hover:bg-primary-dark"
+                          className="mt-6 w-full flex items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 text-xs font-bold uppercase tracking-widest text-white transition-colors hover:bg-primary-dark"
                         >
-                          <Plus size={14} /> {getItemQuantity(item.id) > 0 ? "Add More" : "Add to Cart"}
+                          <Plus size={14} /> Add to Cart
                         </button>
-
-                        <button
-                          type="button"
-                          onClick={() => updateQuantity(item.id, getItemQuantity(item.id) + 1)}
-                          className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition-colors hover:border-primary/30 hover:bg-white/10"
-                          aria-label={`Increase quantity of ${item.name}`}
-                        >
-                          +
-                        </button>
-                      </div>
+                      )}
                     </div>
                   </GlassCard>
                 </motion.div>

@@ -39,7 +39,7 @@ const Hero = () => {
             <img 
               src={HERO_IMAGES[currentImg]} 
               className="w-full h-full object-cover"
-              alt="CafeNova Ambiance"
+              alt="CAFENOIR Ambiance"
             />
           </motion.div>
         </AnimatePresence>

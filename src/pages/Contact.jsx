@@ -1,15 +1,50 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Clock, Send, MessageSquare, Globe, Sparkles } from "lucide-react";
 import GlassCard from "../components/ui/GlassCard";
 import { fadeIn, staggerContainer } from "../utils/animations";
+import { toast } from "react-hot-toast";
 
 const Contact = () => {
+  const [isSending, setIsSending] = useState(false);
+
   const contactInfo = [
     { icon: <Phone size={20} />, title: "Call Us", detail: "+91 96209 96689", sub: "Mon-Fri, 9am-10pm" },
     { icon: <Mail size={20} />, title: "Email Us", detail: "info@codeinnovativetechnologies.com", sub: "Response within 24hrs" },
     { icon: <MapPin size={20} />, title: "Visit Us", detail: "Sector 62, Noida", sub: "Uttar Pradesh, India" },
     { icon: <Clock size={20} />, title: "Hours", detail: "10:00 AM - 11:00 PM", sub: "Open 7 Days a week" },
   ];
+
+  const recipientEmail = "baigjunaid187@gmail.com";
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(event.currentTarget);
+
+    try {
+      setIsSending(true);
+
+      const response = await fetch(`https://formsubmit.co/ajax/${recipientEmail}`, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+        },
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send message");
+      }
+
+      toast.success("Message sent successfully.");
+      event.currentTarget.reset();
+    } catch (error) {
+      toast.error("Unable to send message. Please try again.");
+    } finally {
+      setIsSending(false);
+    }
+  };
 
   return (
     <motion.div 
@@ -71,10 +106,15 @@ const Contact = () => {
             className="lg:col-span-2"
           >
             <GlassCard className="p-8 md:p-12 border-white/5">
-              <form className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <input type="hidden" name="_subject" value="CAFENOIR Contact Form Message" />
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_template" value="table" />
+                <input type="hidden" name="_next" value={window.location.href} />
                 <div className="space-y-2 group">
                   <label className="text-[10px] uppercase tracking-[0.2em] text-slate-500 font-bold ml-1 group-focus-within:text-primary transition-colors">Full Name</label>
                   <input 
+                    name="name"
                     className="w-full p-4 bg-white/5 border border-white/10 rounded-2xl text-white outline-none focus:border-primary/50 focus:bg-white/10 transition-all" 
                     placeholder="John Doe" 
                   />
@@ -82,13 +122,14 @@ const Contact = () => {
                 <div className="space-y-2 group">
                   <label className="text-[10px] uppercase tracking-[0.2em] text-slate-500 font-bold ml-1 group-focus-within:text-primary transition-colors">Email Address</label>
                   <input 
+                    name="email"
                     className="w-full p-4 bg-white/5 border border-white/10 rounded-2xl text-white outline-none focus:border-primary/50 focus:bg-white/10 transition-all" 
                     placeholder="john@example.com" 
                   />
                 </div>
                 <div className="md:col-span-2 space-y-2 group">
                   <label className="text-[10px] uppercase tracking-[0.2em] text-slate-500 font-bold ml-1 group-focus-within:text-primary transition-colors">Subject</label>
-                  <select className="w-full p-4 bg-white/5 border border-white/10 rounded-2xl text-white outline-none focus:border-primary/50 focus:bg-white/10 transition-all appearance-none">
+                  <select name="subject" className="w-full p-4 bg-white/5 border border-white/10 rounded-2xl text-white outline-none focus:border-primary/50 focus:bg-white/10 transition-all appearance-none">
                     <option className="bg-bg-main">General Inquiry</option>
                     <option className="bg-bg-main">Private Event</option>
                     <option className="bg-bg-main">Catering Services</option>
@@ -98,6 +139,7 @@ const Contact = () => {
                 <div className="md:col-span-2 space-y-2 group">
                   <label className="text-[10px] uppercase tracking-[0.2em] text-slate-500 font-bold ml-1 group-focus-within:text-primary transition-colors">Your Message</label>
                   <textarea 
+                    name="message"
                     rows="5"
                     className="w-full p-4 bg-white/5 border border-white/10 rounded-2xl text-white outline-none focus:border-primary/50 focus:bg-white/10 transition-all resize-none" 
                     placeholder="How can we help you today?" 
@@ -108,9 +150,10 @@ const Contact = () => {
                   <motion.button 
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
+                    disabled={isSending}
                     className="w-full py-5 bg-primary hover:bg-primary/80 text-white rounded-2xl font-bold uppercase tracking-widest flex items-center justify-center gap-3 shadow-lg shadow-primary/20 transition-all"
                   >
-                    Send Message <Send size={18} />
+                    {isSending ? "Sending..." : "Send Message"} <Send size={18} />
                   </motion.button>
                 </div>
               </form>
@@ -132,7 +175,7 @@ const Contact = () => {
             {[
               { q: "Do you offer valet parking?", a: "Yes, we provide complimentary valet parking for all our dinner guests." },
               { q: "Can I host a corporate event?", a: "Absolutely. We have a private lounge equipped for presentations and fine dining." },
-              { q: "Is there a dress code?", a: "We recommend smart casual to match the CafeNova atmosphere." }
+              { q: "Is there a dress code?", a: "We recommend smart casual to match the CAFENOIR atmosphere." }
             ].map((faq, i) => (
               <div key={i} className="space-y-3">
                 <h4 className="text-white font-bold flex items-center gap-2">

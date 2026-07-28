@@ -57,33 +57,43 @@ const MustTry = () => {
                   </p>
                 )}
 
-                <div className="flex items-center gap-3 pt-1">
-                  <button
-                    type="button"
-                    onClick={() => updateQuantity(item.id, getItemQuantity(item.id) - 1)}
-                    className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition-colors hover:border-primary/30 hover:bg-white/10"
-                    aria-label={`Decrease quantity of ${item.name}`}
-                  >
-                    -
-                  </button>
+                {getItemQuantity(item.id) > 0 ? (
+                  <div className="flex items-center gap-3 pt-1">
+                    <button
+                      type="button"
+                      onClick={() => updateQuantity(item.id, getItemQuantity(item.id) - 1)}
+                      className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition-colors hover:border-primary/30 hover:bg-white/10"
+                      aria-label={`Decrease quantity of ${item.name}`}
+                    >
+                      -
+                    </button>
 
+                    <button
+                      type="button"
+                      onClick={() => addToCart(item)}
+                      className="flex-1 inline-flex items-center justify-center gap-2 rounded-full bg-primary px-4 py-3 text-xs font-bold uppercase tracking-widest text-white transition-colors hover:bg-primary-dark"
+                    >
+                      <Plus size={14} /> Add More
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => updateQuantity(item.id, getItemQuantity(item.id) + 1)}
+                      className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition-colors hover:border-primary/30 hover:bg-white/10"
+                      aria-label={`Increase quantity of ${item.name}`}
+                    >
+                      +
+                    </button>
+                  </div>
+                ) : (
                   <button
                     type="button"
                     onClick={() => addToCart(item)}
-                    className="flex-1 inline-flex items-center justify-center gap-2 rounded-full bg-primary px-4 py-3 text-xs font-bold uppercase tracking-widest text-white transition-colors hover:bg-primary-dark"
+                    className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-primary px-4 py-3 text-xs font-bold uppercase tracking-widest text-white transition-colors hover:bg-primary-dark"
                   >
-                    <Plus size={14} /> {getItemQuantity(item.id) > 0 ? "Add More" : "Add to Cart"}
+                    <Plus size={14} /> Add to Cart
                   </button>
-
-                  <button
-                    type="button"
-                    onClick={() => updateQuantity(item.id, getItemQuantity(item.id) + 1)}
-                    className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition-colors hover:border-primary/30 hover:bg-white/10"
-                    aria-label={`Increase quantity of ${item.name}`}
-                  >
-                    +
-                  </button>
-                </div>
+                )}
               </div>
             </GlassCard>
           </motion.div>

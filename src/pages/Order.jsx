@@ -4,25 +4,23 @@ import { formatPrice } from "../utils/helpers";
 import GlassCard from "../components/ui/GlassCard";
 import { fadeIn, staggerContainer } from "../utils/animations";
 import { Link } from "react-router-dom";
+import { useCart } from "../context/CartContext";
 
 const Order = () => {
-  // Mock Cart Data (In a real app, this comes from Redux/Context)
-  const cartItems = []; 
+  const { cartItems, updateQuantity, removeFromCart, toggleCustomization } = useCart();
   const isEmpty = cartItems.length === 0;
-  const recommendations = [
-    {
-      title: "Special Ketchup",
-      price: 120,
-      image: "https://images.unsplash.com/photo-1472476443507-c7a5948772fc?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      alt: "Special Ketchup",
-    },
-    {
-      title: "Special Mustard",
-      price: 120,
-      image: "https://plus.unsplash.com/premium_photo-1675676619780-ad4bba28ba62?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      alt: "Special Mustard",
-    },
-  ];
+  const customizationPrice = 120;
+  const subtotal = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+  const customizationTotal = cartItems.reduce(
+    (total, item) => total + (item.customizations?.length || 0) * customizationPrice * item.quantity,
+    0
+  );
+  const gst = subtotal * 0.18;
+  const totalAmount = subtotal + customizationTotal + gst;
+  const customizationOptions = ["Special Ketchup", "Special Mustard"];
+
+  const getItemTotal = (item) =>
+    item.price * item.quantity + (item.customizations?.length || 0) * customizationPrice * item.quantity;
 
   const steps = [
     { id: 1, name: "Cart", icon: <ShoppingBag size={14} />, active: true },
@@ -93,34 +91,79 @@ const Order = () => {
                 </motion.div>
               ) : (
                 cartItems.map((item) => (
-                    <motion.div key={item.id} layout variants={fadeIn("up", 0.1)}>
-                        <GlassCard className="p-4 flex gap-6 items-center group">
-                            {/* item UI logic... */}
-                        </GlassCard>
-                    </motion.div>
+                  <motion.div key={item.id} layout variants={fadeIn("up", 0.1)}>
+                    <GlassCard className="p-4 flex gap-6 items-center group">
+                      <img
+                        src={item.image}
+                        alt={item.name}
+                        className="w-24 h-24 rounded-2xl object-cover border border-white/10"
+                      />
+                      <div className="flex-1">
+                        <p className="text-primary text-[10px] font-bold tracking-widest uppercase mb-1">{item.category}</p>
+                        <h4 className="text-white font-serif text-2xl mb-2">{item.name}</h4>
+                        <p className="text-slate-400 text-sm mb-4 line-clamp-2">{item.description}</p>
+                        <div className="mb-4 space-y-2">
+                          <p className="text-[10px] font-bold uppercase tracking-widest text-slate-500">Customization</p>
+                          <div className="flex flex-wrap gap-2">
+                            {customizationOptions.map((option) => {
+                              const isSelected = item.customizations?.includes(option);
+
+                              return (
+                                <button
+                                  key={option}
+                                  type="button"
+                                  onClick={() => toggleCustomization(item.id, option)}
+                                  className={`rounded-full border px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest transition-colors ${
+                                    isSelected
+                                      ? "border-primary bg-primary/15 text-primary"
+                                      : "border-white/10 bg-white/5 text-slate-400 hover:border-primary/30 hover:text-white"
+                                  }`}
+                                >
+                                  {option}
+                                </button>
+                              );
+                            })}
+                          </div>
+                          {item.customizations?.length > 0 && (
+                            <p className="text-[10px] text-slate-500">
+                              Added: {item.customizations.join(", ")}
+                            </p>
+                          )}
+                        </div>
+                        <div className="flex items-center gap-4">
+                          <span className="text-white font-bold">{formatPrice(getItemTotal(item))}</span>
+                          <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-2">
+                            <button
+                              type="button"
+                              onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                              className="text-slate-300 hover:text-white"
+                            >
+                              <Minus size={14} />
+                            </button>
+                            <span className="min-w-6 text-center text-sm font-bold text-white">{item.quantity}</span>
+                            <button
+                              type="button"
+                              onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                              className="text-slate-300 hover:text-white"
+                            >
+                              <Plus size={14} />
+                            </button>
+                          </div>
+                          <button
+                            type="button"
+                            onClick={() => removeFromCart(item.id)}
+                            className="flex items-center gap-1 text-xs font-bold uppercase tracking-widest text-red-400 hover:text-red-300"
+                          >
+                            <Trash2 size={14} /> Remove
+                          </button>
+                        </div>
+                      </div>
+                    </GlassCard>
+                  </motion.div>
                 ))
               )}
             </AnimatePresence>
 
-            {/* Recommended Section (Content Filler) */}
-            <div className="mt-12 p-8 rounded-3xl border border-white/5 bg-white/[0.02]">
-                <h4 className="text-white font-serif mb-6 text-lg">Chef's Recommendations</h4>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                {recommendations.map((item, i) => (
-                  <div key={i} className="group cursor-pointer">
-                    <div className="aspect-square rounded-2xl mb-3 overflow-hidden border border-white/5 bg-white/5">
-                      <img
-                        src={item.image}
-                        alt={item.alt}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                      />
-                    </div>
-                    <p className="text-xs text-white/60 font-bold group-hover:text-primary transition-colors">{item.title}</p>
-                    <p className="text-[10px] text-primary">{formatPrice(item.price)}</p>
-                        </div>
-                    ))}
-                </div>
-            </div>
           </motion.div>
 
           {/* Right Column: Summary */}
@@ -139,22 +182,26 @@ const Order = () => {
               <div className="space-y-4">
                 <div className="flex justify-between text-sm">
                   <span className="text-slate-500 uppercase tracking-widest font-bold">Subtotal</span>
-                  <span className="text-white font-medium">{formatPrice(0)}</span>
+                  <span className="text-white font-medium">{formatPrice(subtotal)}</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span className="text-slate-500 uppercase tracking-widest font-bold">Customization</span>
+                  <span className="text-white font-medium">{formatPrice(customizationTotal)}</span>
                 </div>
                 <div className="flex justify-between text-sm">
                   <span className="text-slate-500 uppercase tracking-widest font-bold">Delivery Fee</span>
                   <span className="text-emerald-500 font-bold tracking-tighter uppercase">Free</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                    <span className="text-slate-500 uppercase tracking-widest font-bold">Taxes (GST)</span>
-                    <span className="text-white font-medium">{formatPrice(0)}</span>
+                    <span className="text-slate-500 uppercase tracking-widest font-bold">Taxes (GST 18%)</span>
+                    <span className="text-white font-medium">{formatPrice(gst)}</span>
                 </div>
                 
                 <div className="h-px bg-white/10 my-6" />
                 
                 <div className="flex justify-between items-end">
                   <span className="text-white font-serif text-lg">Total Amount</span>
-                  <span className="text-3xl text-primary font-serif italic">{formatPrice(0)}</span>
+                  <span className="text-3xl text-primary font-serif italic">{formatPrice(totalAmount)}</span>
                 </div>
               </div>
 

@@ -4,11 +4,14 @@ import { menuData } from "../data/menuData";
 import GlassCard from "../components/ui/GlassCard";
 import { formatPrice } from "../utils/helpers";
 import { fadeIn, staggerContainer } from "../utils/animations";
-import { Search, Flame, Star, Utensils, Info } from "lucide-react";
+import { Search, Flame, Star, Utensils, Info, Plus } from "lucide-react";
+import { useCart } from "../context/CartContext";
+import MustTry from "../components/sections/MustTry";
 
 const Menu = () => {
   const [filter, setFilter] = useState("All");
   const [search, setSearch] = useState("");
+  const { cartItems, addToCart } = useCart();
 
   const categories = ["All", ...new Set(menuData.map((item) => item.category))];
 
@@ -17,6 +20,9 @@ const Menu = () => {
       (filter === "All" || item.category === filter) &&
       item.name.toLowerCase().includes(search.toLowerCase())
   );
+
+  const getItemQuantity = (itemId) =>
+    cartItems.find((cartItem) => cartItem.id === itemId)?.quantity ?? 0;
 
   return (
     <div className="pt-32 pb-20 bg-bg-main min-h-screen relative overflow-hidden">
@@ -35,6 +41,8 @@ const Menu = () => {
             Explore 50+ Signature Delicacies
           </p>
         </motion.div>
+
+        <MustTry />
         
         {/* Search & Filter Bar */}
         <div className="flex flex-col lg:flex-row justify-between items-center gap-8 mb-20">
@@ -147,6 +155,20 @@ const Menu = () => {
                           <Utensils size={12} className="text-primary" /> Premium Quality
                         </div>
                       </div>
+
+                      {getItemQuantity(item.id) > 0 && (
+                        <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-primary">
+                          In Cart: {getItemQuantity(item.id)}
+                        </div>
+                      )}
+
+                      <button
+                        type="button"
+                        onClick={() => addToCart(item)}
+                        className="mt-6 w-full flex items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 text-xs font-bold uppercase tracking-widest text-white transition-colors hover:bg-primary-dark"
+                      >
+                        <Plus size={14} /> Add to Cart
+                      </button>
                     </div>
                   </GlassCard>
                 </motion.div>

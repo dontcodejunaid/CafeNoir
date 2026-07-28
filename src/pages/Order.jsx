@@ -9,6 +9,20 @@ const Order = () => {
   // Mock Cart Data (In a real app, this comes from Redux/Context)
   const cartItems = []; 
   const isEmpty = cartItems.length === 0;
+  const recommendations = [
+    {
+      title: "Special Ketchup",
+      price: 120,
+      image: "https://images.unsplash.com/photo-1472476443507-c7a5948772fc?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      alt: "Special Ketchup",
+    },
+    {
+      title: "Special Mustard",
+      price: 120,
+      image: "https://plus.unsplash.com/premium_photo-1675676619780-ad4bba28ba62?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      alt: "Special Mustard",
+    },
+  ];
 
   const steps = [
     { id: 1, name: "Cart", icon: <ShoppingBag size={14} />, active: true },
@@ -92,13 +106,17 @@ const Order = () => {
             <div className="mt-12 p-8 rounded-3xl border border-white/5 bg-white/[0.02]">
                 <h4 className="text-white font-serif mb-6 text-lg">Chef's Recommendations</h4>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    {[1, 2].map((_, i) => (
-                        <div key={i} className="group cursor-pointer">
-                            <div className="aspect-square bg-white/5 rounded-2xl mb-3 overflow-hidden border border-white/5">
-                                <div className="w-full h-full bg-gradient-to-br from-primary/20 to-transparent group-hover:scale-110 transition-transform duration-500" />
-                            </div>
-                            <p className="text-xs text-white/60 font-bold group-hover:text-primary transition-colors">Special Sauce</p>
-                            <p className="text-[10px] text-primary">{formatPrice(120)}</p>
+                {recommendations.map((item, i) => (
+                  <div key={i} className="group cursor-pointer">
+                    <div className="aspect-square rounded-2xl mb-3 overflow-hidden border border-white/5 bg-white/5">
+                      <img
+                        src={item.image}
+                        alt={item.alt}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                    </div>
+                    <p className="text-xs text-white/60 font-bold group-hover:text-primary transition-colors">{item.title}</p>
+                    <p className="text-[10px] text-primary">{formatPrice(item.price)}</p>
                         </div>
                     ))}
                 </div>

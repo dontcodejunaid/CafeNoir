@@ -72,17 +72,15 @@ const MenuPreview = () => {
 
         {/* Gallery Grid */}
         <motion.div 
-          layout
           variants={staggerContainer} 
           initial="initial" 
           whileInView="animate" 
           viewport={{ once: true }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
-          <AnimatePresence mode="popLayout">
+          <AnimatePresence>
             {filteredMenu.map((item) => (
               <motion.div
-                layout
                 key={item.id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}

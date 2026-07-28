@@ -77,17 +77,15 @@ const Menu = () => {
 
         {/* Menu Grid */}
         <motion.div 
-          layout
           variants={staggerContainer} 
           initial="initial" 
           animate="animate"
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
-          <AnimatePresence mode="popLayout">
+          <AnimatePresence>
             {filteredMenu.length > 0 ? (
               filteredMenu.map((item) => (
                 <motion.div
-                  layout
                   key={item.id}
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}

@@ -26,10 +26,10 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { Icon: FaInstagram, href: "#", color: "hover:text-pink-500", label: "Instagram" },
-    { Icon: FaFacebook, href: "#", color: "hover:text-blue-600", label: "Facebook" },
-    { Icon: FaTwitter, href: "#", color: "hover:text-sky-400", label: "Twitter" },
-    { Icon: FaLinkedin, href: "#", color: "hover:text-blue-700", label: "LinkedIn" },
+    { Icon: FaInstagram, href: "https://www.instagram.com/cafenova", color: "hover:text-pink-500", label: "Instagram" },
+    { Icon: FaFacebook, href: "https://www.facebook.com/cafenova", color: "hover:text-blue-600", label: "Facebook" },
+    { Icon: FaTwitter, href: "https://x.com/cafenova", color: "hover:text-sky-400", label: "X / Twitter" },
+    { Icon: FaLinkedin, href: "https://www.linkedin.com/company/cafenova", color: "hover:text-blue-700", label: "LinkedIn" },
   ];
 
   return (
@@ -97,6 +97,9 @@ const Footer = () => {
                 <MagneticButton key={label}>
                   <a
                     href={href}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={label}
                     className={cn(
                       "w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 transition-all duration-300",
                       color,

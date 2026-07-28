@@ -26,10 +26,10 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { Icon: FaInstagram, href: "https://www.instagram.com/cafenova", color: "hover:text-pink-500", label: "Instagram" },
+    { Icon: FaInstagram, href: "https://www.instagram.com/code_innovativetechnologies", color: "hover:text-pink-500", label: "Instagram" },
     { Icon: FaFacebook, href: "https://www.facebook.com/cafenova", color: "hover:text-blue-600", label: "Facebook" },
     { Icon: FaTwitter, href: "https://x.com/cafenova", color: "hover:text-sky-400", label: "X / Twitter" },
-    { Icon: FaLinkedin, href: "https://www.linkedin.com/company/cafenova", color: "hover:text-blue-700", label: "LinkedIn" },
+    { Icon: FaLinkedin, href: "https://www.linkedin.com/company/code-innovative-technologies/", color: "hover:text-blue-700", label: "LinkedIn" },
   ];
 
   return (

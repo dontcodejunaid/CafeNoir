@@ -41,7 +41,7 @@ export const menuData = [
   { id: 208, name: "Crispy Hot Dog", category: "Fast Food", price: 290, image: "https://images.unsplash.com/photo-1541214113241-21578d2d9b62?w=600", description: "Premium beef sausage with relish.", tags: ["Snack"], calories: "450 kcal" },
 
   // 🍰 SWEETS (34-42)
-  { id: 301, name: "Midnight Lava Cake", category: "Sweets", price: 450, image: "https://images.unsplash.com/photo-1624353365286-3f8d62daad51?w=600", description: "Molten center chocolate cake.", tags: ["Special"], calories: "600 kcal" },
+  { id: 301, name: "Midnight Lava Cake", category: "Sweets", price: 450, image: "https://images.unsplash.com/photo-1617305855058-336d24456869?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", description: "Molten center chocolate cake.", tags: ["Special"], calories: "600 kcal" },
   { id: 302, name: "New York Cheesecake", category: "Sweets", price: 480, image: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=600", description: "Creamy with berry compote.", tags: ["Classic"], calories: "550 kcal" },
   { id: 303, name: "Tiramisu", category: "Sweets", price: 520, image: "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=600", description: "Espresso-soaked ladyfingers with mascarpone.", tags: ["Italian"], calories: "480 kcal" },
   { id: 304, name: "Gulab Jamun Fusion", category: "Sweets", price: 350, image: "https://bakewithshivesh.com/wp-content/uploads/2024/10/WhatsApp-Image-2024-10-22-at-16.18.52_5772339f.jpg", description: "Warm dumplings with vanilla bean ice cream.", tags: ["Fusion"], calories: "420 kcal" },
